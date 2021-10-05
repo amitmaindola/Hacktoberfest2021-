@@ -10,6 +10,8 @@ for (var i = 0; i < numberOfDrumButtons; i++) {
 
     buttonAnimation(buttonInnerHTML);
 
+    lightEffect();
+
   });
 
 }
@@ -17,7 +19,7 @@ for (var i = 0; i < numberOfDrumButtons; i++) {
 document.addEventListener("keypress", function(event) {
 
   makeSound(event.key);
-
+  lightEffect();
   buttonAnimation(event.key);
 
 });
@@ -78,4 +80,15 @@ function buttonAnimation(currentKey) {
     activeButton.classList.remove("pressed");
   }, 100);
 
+}
+
+
+function lightEffect(){
+  var r=Math.floor(Math.random()*2)*256;
+  var g=Math.floor(Math.random()*2)*256;
+  var b=Math.floor(Math.random()*2)*256;
+  document.querySelector("body").style.backgroundColor="rgb("+r+","+g+","+b+")";
+  setTimeout(function(){
+    document.querySelector("body").style.backgroundColor="#025955";
+  },200)
 }
